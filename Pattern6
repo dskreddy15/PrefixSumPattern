@@ -1,0 +1,22 @@
+Example 1:
+
+Input: nums = [1,1,1], k = 2
+Output: 2
+Example 2:
+
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+
+result = 0
+        prefix_sum = {0: 1}  # Initialize with 0:1 to handle subarrays starting from index 0
+        curr_sum = 0
+
+        for num in nums:
+            curr_sum += num
+            if curr_sum - k in prefix_sum:
+                result += prefix_sum[curr_sum - k]
+            prefix_sum[curr_sum] = prefix_sum.get(curr_sum, 0) + 1
+
+        return result
+                
